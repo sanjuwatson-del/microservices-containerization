@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  user-service:
+    build: ./User-service
+    container_name: User-service
+    ports:
+      - "3000:3000"
+    networks:
+      - microservice-network
+
+  product-service:
+    build: ./Product-service
+    container_name: Product-service
+    ports:
+      - "3001:3001"
+    networks:
+      - microservice-network
+
+  gateway-service:
+    build: ./Gateway-service
+    container_name: Gateway-service
+    ports:
+      - "3003:3003"
+    networks:
+      - microservice-network
+
+networks:
+  microservice-network:
+    driver: bridge
